@@ -1,7 +1,7 @@
 package com.globant.java.models;
 
 public class PartTimeTeacher extends Teacher{
-    private double activeHours;
+    private final double activeHours;
 
     public PartTimeTeacher(String name, double activeHours, boolean isFullTime) {
         setFullTime(isFullTime);
