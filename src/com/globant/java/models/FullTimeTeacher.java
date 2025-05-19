@@ -7,9 +7,10 @@ public class FullTimeTeacher extends Teacher{
         setFullTime(isFullTime);
         setName(name);
         this.yearsExperience = yearsExperience;
+        setBaseSalary(salary());
     }
 
     public double salary(){
-        return getBaseSalary()*1.1*this.yearsExperience;
+        return getBaseSalary()*1.1*(double)this.yearsExperience;
     }
 }

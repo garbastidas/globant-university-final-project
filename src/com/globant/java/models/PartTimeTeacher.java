@@ -7,6 +7,7 @@ public class PartTimeTeacher extends Teacher{
         setFullTime(isFullTime);
         setName(name);
         this.activeHours = activeHours;
+        setBaseSalary(salary());
     }
     // I'm going to assume that a teacher works 40 hours per week
 

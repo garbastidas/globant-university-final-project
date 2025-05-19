@@ -46,8 +46,9 @@ public class Class {
     }
 
     public void getStudentList() {
-        for(Student student: studentList){
-            System.out.println(student.getName() + "\t" + student.getIdStudent());
+        for(int i = 0; i<studentList.size(); i++){
+            studentList.get(i).setIdStudent(i);
+            System.out.println(studentList.get(i).getName() + "\t" + studentList.get(i).getIdStudent());
         }
     }
 
@@ -58,6 +59,7 @@ public class Class {
     public void printClassInfo(){
         System.out.println("Class: " + this.name);
         System.out.println("Teacher: " + this.teacher.getName());
+        System.out.println("Classroom: " + this.classroom);
         getStudentList();
     }
 }

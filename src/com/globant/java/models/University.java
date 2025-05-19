@@ -9,12 +9,32 @@ public class University {
     private List<Class> classes = new ArrayList<>();
     private List<Teacher> teachers = new ArrayList<>();
     private List<Student> students = new ArrayList<>();
-    private boolean isCallSubmenu = false;
+
+    public void setClasses(List<Class> classes) {
+        this.classes = classes;
+    }
+
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 
     Scanner read = new Scanner(System.in);
     public void printStudents(){
         for (int i = 0; i < students.size() ; i++){
             System.out.println(i + "\t" + students.get(i).getName());
+        }
+    }
+    public void addTeacher(String name, boolean isFullTime){
+        if (isFullTime){
+            System.out.println("Enter the years of experience: ");
+            Teacher teacher = new FullTimeTeacher(name, read.nextInt(), isFullTime);
+        } else {
+            System.out.println("Enter active hours: ");
+            Teacher teacher = new PartTimeTeacher(name, read.nextInt(), isFullTime);
         }
     }
     public void printTeachers(){
@@ -32,38 +52,55 @@ public class University {
         for (int i = 0; i < classes.size() ; i++){
             System.out.println(i + "\t" +  classes.get(i).getName());
         }
-        System.out.println("Type the number class to know the basic info");
-        int classAsk = read.nextInt();
-        submenuClass(classAsk);
+        System.out.println("Type the number class to know the basic info or type not");
+        String negativeAnswer = read.nextLine();
+        if(negativeAnswer.equalsIgnoreCase("not")){
+            return;
+        } else {
+            int classAsk = read.nextInt();
+            submenuClass(classAsk);
+        }
 
     }
     public void newStudent(){
-        System.out.println("Type name and age student");
-        Student student = new Student(read.nextLine(),read.nextInt());
+        System.out.print("Type name: ");
+        String studentName = read.nextLine();
+        System.out.print("Type age: ");
+        int studentAge = read.nextInt();
+        Student student = new Student(studentName,studentAge);
+        students.add(student);
+        System.out.println("New student was added");
     }
 
     public void newClass(){
         printTeachers();
         System.out.println("Select a teacher (type the number)");
         int selectedTeacher = read.nextInt();
-        System.out.println("Type name and classroom (there are classrooms from 100 to 150, assign a number between them)");
-        Class newClass = new Class(read.nextLine(),teachers.get(selectedTeacher) , read.nextInt());
-        System.out.println("Add the students from the list, typing the number to the left");
-        printStudents();
+        read.nextLine();
+        System.out.print("Type name class: ");
+        String nameClass = read.nextLine();
+        System.out.print("Type classroom (there are classrooms from 100 to 150, assign a number between them): ");
+        int currClassroom = read.nextInt();
+        Class newClass = new Class(nameClass,teachers.get(selectedTeacher) , currClassroom);
+        System.out.println("Add the students from the list, typing the number from the left");
         while(true){
-            newClass.addStudent(students.get(read.nextInt()));
+            printStudents();
+            int studentID = read.nextInt();
+            newClass.addStudent(students.get(studentID));
             System.out.println("Do you want to add another student? Type yes or not");
+            read.nextLine();
             String anotherStudent = read.nextLine();
             if (anotherStudent.equals("yes")){
                 continue;
             } else if (anotherStudent.equals("not")) {
-                System.out.println();
                 break;
             }
         }
+        classes.add(newClass);
     }
 
-    public static void exit(){
-        System.out.println("Type F to exit");
+    public void searchStudent(){
+
     }
+
 }
