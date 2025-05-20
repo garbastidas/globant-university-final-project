@@ -8,7 +8,7 @@ The following program was designed and made on purpose as a requirement to concl
 
 ### Introduction
 
-This repository contains a UML Class Diagram which tries to illustrate the best way to design the required program. Additionally, files contain the developed program divided into two packages: models and principal. The first stores the classes that compose all program structure, while the second one has the main class which controls the execution and menu.
+This repository contains a (UML Class Diagram)[University Final Project.pdf] which tries to illustrate the best way to design the required program. Additionally, files contain the developed program divided into two packages: models and principal. The first stores the classes that compose all program structure, while the second one has the main class which controls the execution and menu.
 
 ### Packages
 
