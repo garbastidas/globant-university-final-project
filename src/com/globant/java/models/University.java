@@ -53,8 +53,8 @@ public class University {
             System.out.println(i + "\t" +  classes.get(i).getName());
         }
         System.out.println("Type the number class to know the basic info or type not");
-        String negativeAnswer = read.nextLine();
-        if(negativeAnswer.equalsIgnoreCase("not")){
+        //String negativeAnswer = read.nextLine();
+        if(read.nextLine().equals("not")){
             return;
         } else {
             int classAsk = read.nextInt();
@@ -100,7 +100,18 @@ public class University {
     }
 
     public void searchStudent(){
-
+        printStudents();
+        System.out.println("Select a student id to know what courses are their in");
+        int studentID = read.nextInt();
+        Student currStudent = students.get(studentID);
+        List<Class> studentClasses = new ArrayList<>();
+        for(Class clas_s: classes){
+            for(Student student: clas_s.getStudent_List()){
+                if(student.equals(currStudent)){
+                    System.out.println(clas_s.getName() + " " + clas_s.getClassroom());
+                }
+            }
+        }
     }
 
 }

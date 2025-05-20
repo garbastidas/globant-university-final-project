@@ -52,6 +52,10 @@ public class Class {
         }
     }
 
+    public List<Student> getStudent_List(){
+        return this.studentList;
+    }
+
     public void addStudent(Student student){
         studentList.add(student);
     }
