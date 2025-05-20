@@ -105,6 +105,7 @@ public class University {
         int studentID = read.nextInt();
         Student currStudent = students.get(studentID);
         List<Class> studentClasses = new ArrayList<>();
+        System.out.println("The student " + currStudent.getName() + " is subscribed to the following classes: ");
         for(Class clas_s: classes){
             for(Student student: clas_s.getStudent_List()){
                 if(student.equals(currStudent)){
